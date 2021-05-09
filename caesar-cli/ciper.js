@@ -23,7 +23,6 @@ const applyCipher = (data, shift) => {
   }
 
   return data
-    .toString()
     .split('')
     .map((char) => {
       const lowerChar = char.toLowerCase();

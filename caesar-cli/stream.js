@@ -10,10 +10,10 @@ const pipelineCallback = (error) => {
   process.exit(UNCAUGHT_FATAL_EXCEPTION);
 };
 
-const createStream = ({ input, output, transformCallback }) => {
+const createStream = ({ input, output, transformData }) => {
   const transform = new Transform({
     transform(chunk, encoding, callback) {
-      this.push(transformCallback(chunk));
+      this.push(transformData(chunk.toString()));
       callback();
     },
   });
