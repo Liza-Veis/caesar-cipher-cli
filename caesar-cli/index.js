@@ -9,9 +9,12 @@ const output = getOption(OPTIONS.output);
 const action = getOption(OPTIONS.action);
 const shift = getOption(OPTIONS.shift) * (action === 'encode' ? 1 : -1);
 const transformCallback = (data) => {
-  const newData = applyCipher(data, shift);
+  let newData = applyCipher(data, shift);
 
-  return newData + (input ? '\n' : '');
+  if (!newData.endsWith('\n')) newData += '\n';
+  if (!output) newData += '\n';
+
+  return newData;
 };
 
 createStream({ input, output, transformCallback });

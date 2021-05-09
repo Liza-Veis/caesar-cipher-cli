@@ -52,9 +52,7 @@ const checkArguments = () => {
   }
   if (!ACTION_VALUES.includes(action)) {
     handleError(
-      `Expected "--action" value to be "encode" or "decode", instead received "${
-        argv[actionIndex + 1]
-      }"`
+      `Expected "--action" value to be "encode" or "decode", instead received "${action}"`
     );
   }
   if (shift === false) {
@@ -62,13 +60,14 @@ const checkArguments = () => {
   }
   if (!shift || !Number.isInteger(+shift)) {
     handleError(
-      `Expected "--shift" value to be an integer, instead received "${
-        argv[actionIndex + 1]
-      }"`
+      `Expected "--shift" value to be an integer, instead received "${shift}"`
     );
   }
   if (input) {
     checkFileAccess(input, OPTIONS.input);
+    if (input === output) {
+      handleError('"--input" and "--output" values must be different');
+    }
   }
   if (output) {
     checkFileAccess(output, OPTIONS.output);
