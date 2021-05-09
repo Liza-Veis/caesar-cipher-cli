@@ -63,13 +63,19 @@ const checkArguments = () => {
       `Expected "--shift" value to be an integer, instead received "${shift}"`
     );
   }
-  if (input) {
+  if (input !== false) {
+    if (!input) {
+      handleError('Value for "--input" was not provided');
+    }
     checkFileAccess(input, OPTIONS.input);
     if (input === output) {
       handleError('"--input" and "--output" values must be different');
     }
   }
-  if (output) {
+  if (output !== false) {
+    if (!output) {
+      handleError('Value for "--output" was not provided');
+    }
     checkFileAccess(output, OPTIONS.output);
   }
 };
