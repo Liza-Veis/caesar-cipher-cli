@@ -2,6 +2,8 @@
 
 This is a command-line interface to encrypt and decrypt text with Caesar's cipher. The application encrypts and decrypts only latin alphabet letters. All other characters remain unchanged.
 
+---
+
 ## How to install
 
 1. Download or clone this repository.
@@ -11,7 +13,9 @@ This is a command-line interface to encrypt and decrypt text with Caesar's ciphe
 
 ## How to use
 
-After installation completed to start the application, in the folder with the application, enter the following into the command line: "node caesar-cli [options]. Options:
+In the application folder, enter the following into the command line: "node caesar-cli [options]".
+
+**Options**:
 
 - -s, --shift: a shift
 - -i, --input: an input file
@@ -35,7 +39,7 @@ If the **input** and/or the **output** options are absent, then reading and writ
 Encription with shorthand names of the options
 
 ```javascript
-$ node caesar-cli -a encode -s 7 -i "./input.txt" -o "./output.txt"
+$ node caesar-cli -a encode -s 7 -i ./input.txt -o ./output.txt
 ```
 
 Before:
@@ -53,7 +57,7 @@ After:
 Decryption with full names of the options
 
 ```javascript
-$ node caesar-cli --action decode --shift 7 --input "./plain.txt" --output "./decode.txt"
+$ node caesar-cli --action decode --shift 7 --input ./plain.txt --output ./decode.txt
 ```
 
 Before:
